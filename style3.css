@@ -1,0 +1,249 @@
+body {
+    background: #dcb4ee;
+    margin: 0;
+    font-size: 1.5em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: silver;
+    text-align: center;
+    height: 100vh;
+
+    display: grid;
+    grid-gap: 10px;
+    
+    grid-template-areas:
+        "header"
+        "hero"
+        "body"
+        "footer"
+}
+
+/* Header */
+a { color:silver
+}
+header {
+    background: #dcb4ee;
+    font-size: 25px;
+    padding: 20px;
+    margin: 0.5 em;
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1 fr 1 fr;
+    grid-gap: 20px;
+    grid-template-areas:
+        "brand brand"
+        "nav tools";
+}
+
+header .brand {
+    background: rgb(81, 4, 126);
+    grid-area: brand;
+    padding: 1em;
+}
+
+header nav {
+    background: rgb(81, 4, 126);
+    grid-area: nav;
+    padding: 1em;
+}
+
+header .tools {
+    background: rgb(81, 4, 126);
+    grid-area: tools;
+    padding: 1em;
+}
+
+/* Hero */
+
+.hero {
+    background: rgb(128, 78, 156);
+    padding: 10px;
+    grid-area: hero;
+    margin: 1em;
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+        "action";
+}
+
+.hero .action {
+    background: rgb(241, 241, 143);
+    grid-area: action;
+    padding: 50px 0 50px;
+}
+
+.hero .feature {
+    background: rgb(241, 241, 143);
+    grid-area: feature;
+    padding: 50px 0 50px;
+}
+
+/* Body */
+main {
+    background: rgb(168, 128, 190);
+    padding: 10px;
+    grid-area: body;
+    margin: 1em; 
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    grid-template-areas: 
+        "feature"
+        "ad"
+        "listing";
+}
+
+main .feature {
+    background: rgb(213, 255, 136);
+    grid-area: feature;
+    padding: 50px 0 50px;
+}
+
+main .mobile-ad {
+    grid-area: ad;
+}
+
+main .listing {
+    background: rgb(213, 255, 136);
+    grid-area: listing;
+    padding: 70px 0 70px;
+}
+/* Sidebar */
+.sidebar {
+    background: rgb(126, 8, 236);
+    padding: 40px;
+    grid-area: sidebar;
+    margin: 1em;
+
+    display: none;
+}
+
+.sidebar .feature {
+    background: rgb(255, 208, 136);
+    height: 100%;
+}
+
+/* Footer */
+footer {
+    background: rgb(190, 84, 247);
+    padding: 15px;
+    grid-area: footer;
+
+}
+
+.desktop-ad {
+    grid-area: ad;
+    display: none;
+}
+
+.hero .feature {
+    display: none;
+}
+
+
+/* Other */
+.mobile-ad img {
+    vertical-align: top;
+    width: 100%;
+}
+
+.desktop-ad img {
+    vertical-align: top;
+    width: 300px;
+    padding: 50px 0 50px;
+}
+
+.mobile-ad:hover {
+    opacity: 0.5;
+}
+
+.desktop-ad:hover {
+    opacity: 0.5;
+}
+
+/* Tablet friendly layout */
+@media (min-width: 576px) {
+    body {
+        grid-template-rows: auto auto 1fr auto auto;
+        grid-template-areas:
+            "header"
+            "hero"
+            "body"
+            "sidebar"
+            "footer";
+    }
+
+    /* Change Header Layout */
+    header {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "brand nav tools";
+    }
+
+    /* Change Hero Layout */
+    .hero {
+        grid-template-areas:
+            "feature"
+            "action";
+    }
+
+    .hero .feature {
+        display: block;
+    }
+
+    /* Change Body Layout */
+    main {
+        grid-template-columns: 1fr 200px;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "feature ad"
+            "listing listing";
+    }
+
+    /* Change Sidebar Layout */
+    .sidebar {
+        display: grid;
+    }
+
+    .mobile-ad img {
+        width: 200px;
+    }
+}
+
+/* Desktop friendly layout */
+@media (min-width: 992px) {
+    body {
+        grid-template-columns: 1fr 350px;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "header header"
+            "hero ad"
+            "body sidebar"
+            "footer footer"
+    }
+
+    /* Change Hero Layout */
+    .hero {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "feature action"
+    }
+
+    /* Change Body Layout */
+    main {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+            "feature listing"
+    }
+
+    .mobile-ad {
+        display: none;
+    }
+
+    .desktop-ad {
+        display: block;
+    }
+}
